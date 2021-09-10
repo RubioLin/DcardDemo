@@ -14,9 +14,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iIu-Ma-SQJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postsCell" rowHeight="127" id="mKU-gc-f08" userLabel="postsCell" customClass="MainPageTableViewCell" customModule="DcardDemo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainPageTableViewCell" rowHeight="127" id="mKU-gc-f08" customClass="MainPageTableViewCell" customModule="DcardDemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="127"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mKU-gc-f08" id="6du-SN-UDi">
@@ -60,7 +60,6 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4z-t2-LCY" userLabel="articleTitle">
                                                             <rect key="frame" x="0.0" y="16.000000000000004" width="41.333333333333336" height="35.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU9-1q-vxY" userLabel="articleExcerpt">
@@ -118,7 +117,6 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="LiR-nk-XWD" secondAttribute="bottom" constant="10" id="JMk-zE-Rls"/>
                                         <constraint firstItem="LiR-nk-XWD" firstAttribute="leading" secondItem="6du-SN-UDi" secondAttribute="leading" constant="10" id="sxM-GU-qFf"/>
@@ -126,7 +124,6 @@
                                         <constraint firstAttribute="trailing" secondItem="LiR-nk-XWD" secondAttribute="trailing" constant="10" id="ujA-rL-V2d"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="articleExcerptLabel" destination="MU9-1q-vxY" id="4m2-Cc-RMa"/>
                                     <outlet property="articleImageView" destination="GEm-NF-o0R" id="znf-sg-CxJ"/>
@@ -136,6 +133,7 @@
                                     <outlet property="genderImageView" destination="5m2-Aa-4RS" id="V0F-yi-kQF"/>
                                     <outlet property="likeCountLabel" destination="AQl-Tg-kft" id="htX-Ms-CMf"/>
                                     <outlet property="schoolNameLabel" destination="ELe-K1-pjP" id="6SV-IT-omM"/>
+                                    <segue destination="LaA-WG-X63" kind="show" id="H6I-mu-l7K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -151,44 +149,34 @@
             </objects>
             <point key="canvasLocation" x="943.20000000000005" y="172.26386806596702"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Detail Page Table View Controller-->
         <scene sceneID="nua-rR-yJZ">
             <objects>
-                <tableViewController id="LaA-WG-X63" sceneMemberID="viewController">
+                <tableViewController id="LaA-WG-X63" customClass="DetailPageTableViewController" customModule="DcardDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vx5-x0-9Fj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="610" id="z1Y-2y-iPP">
-                                <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="610"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z1Y-2y-iPP" id="KKm-PS-vko">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="LaA-WG-X63" id="kUo-vd-HnB"/>
                             <outlet property="delegate" destination="LaA-WG-X63" id="EtC-OE-EiY"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="otv-qp-ufT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDe-7x-4W4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1768.8" y="171.42857142857144"/>
+            <point key="canvasLocation" x="1768.8" y="171.36431784107947"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YqJ-aO-xzT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k9X-uq-Lbu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="dcv-RL-fz3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcv-RL-fz3">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" systemColor="systemGrayColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -206,6 +194,9 @@
         <image name="message.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
