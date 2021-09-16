@@ -88,38 +88,40 @@ class DetailPageTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(DetailPageTableViewCell.self)") as? DetailPageTableViewCell
-            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(DetailPageTableViewCell.self)", for: indexPath) as? DetailPageTableViewCell
+            else { return DetailPageTableViewCell() }
             //genderImageView
             if detailPage?.gender == "M" {
-                cell?.DetailGenderImageView.image = UIImage(named: "M")
+                cell.DetailGenderImageView.image = UIImage(named: "M")
             } else {
-                cell?.DetailGenderImageView.image = UIImage(named: "F")
+                cell.DetailGenderImageView.image = UIImage(named: "F")
             }
             
             //DetailSchoolNameLabel
             if let school = detailPage?.school {
-                cell?.DetailSchoolNameLabel.text = school
+                cell.DetailSchoolNameLabel.text = "\(school)"
             } else {
-                cell?.DetailSchoolNameLabel.text = "匿名"
+                cell.DetailSchoolNameLabel.text = "匿名"
             }
+            
             //DetailDepartmentLabel
             if let department = detailPage?.department {
-                cell?.DetailDepartmentLabel.text = department
+                cell.DetailDepartmentLabel.text = "\(department)"
             } else {
                 if detailPage?.gender == "M"{
-                    cell?.DetailDepartmentLabel.text = "男生"
+                    cell.DetailDepartmentLabel.text = "男生"
                 } else {
-                    cell?.DetailDepartmentLabel.text = "女生"
+                    cell.DetailDepartmentLabel.text = "女生"
                 }
             }
+            
             //DetailArticleTitleLabel
             if let title = detailPage?.title {
-                cell?.DetailArticleTitleLabel.text = "\(title)"
+                cell.DetailArticleTitleLabel.text = "\(title)"
             }
             
             //DetailForumNameLabel
-            cell?.DetailForumNameLabel.text = detailPage?.forumName
+            cell.DetailForumNameLabel.text = detailPage?.forumName
             
             //DetailCreatedAtLabel
             let dateFormatter = ISO8601DateFormatter()
@@ -130,65 +132,93 @@ class DetailPageTableViewController: UITableViewController {
                 let now = Date()
                 let diff: DateComponents = theCaleder.dateComponents([.day, .hour], from: date!, to: now)
                 if diff.day! < 1 {
-                    cell?.DetailCreatedAtLabel.text = "\(diff.hour!)小時前"
-                } else if diff.day! > 1, diff.day! < 7 {
-                    cell?.DetailCreatedAtLabel.text = "\(diff.day)天前"
+                    cell.DetailCreatedAtLabel.text = "\(diff.hour!)小時前"
+                } else if 1 < diff.day! || diff.day! < 7 {
+                    cell.DetailCreatedAtLabel.text = "\(diff.day!)天前"
                 } else {
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "zh_Hant_TW")
                     dateFormatter.dateFormat = "MM月dd日"
                     let dateStr = dateFormatter.string(from: date!)
-                    cell?.DetailCreatedAtLabel.text = "\(dateStr)"
+                    cell.DetailCreatedAtLabel.text = "\(dateStr)"
                 }
             }
             
             //DetailContentLabel
+            cell.DetailContentLabel.text = nil
             if let content = detailPage?.content {
-                cell?.DetailContentLabel.text = content
+                DispatchQueue.main.async {
+                    cell.DetailContentLabel.text = content
+                }
             }
             
             //DetailLikeCountLabel, DetailCommentCountLabel
+            cell.DetailLikeCountLabel.text = nil
+            cell.DetailCommentCountLabel.text = nil
             if let likeCount = detailPage?.likeCount,
                let commentCount = detailPage?.commentCount {
-                cell?.DetailLikeCountLabel.text = String(likeCount)
-                cell?.DetailCommentCountLabel.text = String(commentCount)
+                cell.DetailLikeCountLabel.text = "\(likeCount)"
+                cell.DetailCommentCountLabel.text = "\(commentCount)"
             }
             
-            return cell!
+            return cell
             
         } else {
             
             let comment = comments[indexPath.row]
 
-            let cell = tableView.dequeueReusableCell(withIdentifier: "\(CommentTableViewCell.self)") as? CommentTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CommentTableViewCell.self)", for: indexPath) as? CommentTableViewCell
+            else { return CommentTableViewCell() }
             
             //genderImageView
-            if comment.gender == "M" {
-                cell?.commentGenderImageVIew.image = UIImage(named: "M")
+            cell.commentGenderImageVIew.image = nil
+            if let gender = comment.gender {
+                if gender == "M" {
+                    cell.commentGenderImageVIew.image = UIImage(named: "M")
+                } else {
+                    cell.commentGenderImageVIew.image = UIImage(named: "F")
+                }
             } else {
-                cell?.commentGenderImageVIew.image = UIImage(named: "F")
+                cell.commentGenderImageVIew.image = UIImage(named: "Default")
             }
             
             //SchoolNameLabel
-            cell?.commentSchoolNameLabel.text = comment.school
+            cell.commentSchoolNameLabel.text = nil
+            if comment.hiddenByAuthor == true {
+                cell.commentSchoolNameLabel.text = "這則留言已被刪除"
+            } else {
+                if comment.host == true {
+                    cell.commentSchoolNameLabel.text = "原PO"
+                } else {
+                    cell.commentSchoolNameLabel.text = comment.school
+                }
+            }
             
             //ContentLabel
-            cell?.commentContentLabel.text = ""
-            cell?.commentContentLabel.text = comment.content
+            cell.commentContentLabel.text = nil
+            if let content = comment.content {
+                cell.commentContentLabel.text = content
+            } else {
+                cell.commentContentLabel.text = "已經刪除的內容就像 Dcard 一樣，錯過是無法再相見的！"
+            }
             
             //CommentFloorCreatedAtLabel
-            let dateFormatter = ISO8601DateFormatter()
-            dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-            let date = dateFormatter.date(from: comment.createdAt)
-            let theCaleder = Calendar.current
-            let now = Date()
-            let diff: DateComponents = theCaleder.dateComponents([.day, .hour], from: date!, to: now)
-            if diff.day! < 1 {
-                cell?.commentFloorCreatedAtLabel.text = "B\(comment.floor), \(diff.hour!)小時前"
-            } else {
-                cell?.commentFloorCreatedAtLabel.text = "B\(comment.floor), \(diff.day!)天前"
+            cell.commentFloorCreatedAtLabel.text = nil
+            DispatchQueue.main.async {
+                let dateFormatter = ISO8601DateFormatter()
+                dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+                let date = dateFormatter.date(from: comment.createdAt)
+                let theCaleder = Calendar.current
+                let now = Date()
+                let diff: DateComponents = theCaleder.dateComponents([.day, .hour], from: date!, to: now)
+                if diff.day! < 1 {
+                    cell.commentFloorCreatedAtLabel.text = "B\(comment.floor), \(diff.hour!)小時前"
+                } else {
+                    cell.commentFloorCreatedAtLabel.text = "B\(comment.floor), \(diff.day!)天前"
+                }
             }
-            return cell!
+            
+            return cell
         }
     }
 
