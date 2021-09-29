@@ -1,65 +1,47 @@
 import UIKit
 
     
-class DetailPageTableViewController: UITableViewController {
+class PostViewController: UITableViewController {
     
     var comments: [Comments] = []
-    var detailPage: DetailPage?
-    var posts: Posts!
+    var post: Post?
+    var dcard: Dcard!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "\(posts.title)"
-        setupDetailPageCell()
+        navigationItem.title = "\(dcard.title)"
+        setupContentCell()
         setupCommentCell()
         fetchComments()
-        fetchDetailPage()
+        fetchContent()
     }
     
     func fetchComments() {
-        let urlStr = "https://www.dcard.tw/service/api/v2/posts/\(posts.id)/comments"
-        if let url = URL(string: urlStr) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    let decoder = JSONDecoder()
-                    do {
-                        let comment = try decoder.decode([Comments].self, from: data)
-                        self.comments = comment
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    } catch {
-                        print(error)
-                    }
-                    
-                }
-            }.resume()
+        DcardClient.shard.fetchComments(urlString: "https://www.dcard.tw/service/api/v2/posts/\(dcard.id)/comments?limit=45") { comment in
+            if let comment = comment {
+                self.comments = comment
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
-    func fetchDetailPage() {
-        let urlStr = "https://www.dcard.tw/service/api/v2/posts/\(posts.id)"
-        if let url = URL(string: urlStr) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    let decoder = JSONDecoder()
-                    do {
-                        let detailPages = try decoder.decode(DetailPage.self, from: data)
-                        self.detailPage = detailPages
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    } catch {
-                        print(error)
-                    }
-                }
-            }.resume()
+    func fetchContent() {
+        DcardClient.shard.fetchContent(urlString: "https://www.dcard.tw/service/api/v2/posts/\(dcard.id)") { content in
+            if let content = content {
+                self.post = content
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
-    func setupDetailPageCell() {
-        let detailPageCellNib = UINib(nibName: "DetailPageTableViewCell", bundle: .main)
-        tableView.register(detailPageCellNib, forCellReuseIdentifier: "DetailPageTableViewCell")
+    
+    func setupContentCell() {
+        let detailPageCellNib = UINib(nibName: "ContentTableViewCell", bundle: .main)
+        tableView.register(detailPageCellNib, forCellReuseIdentifier: "ContentTableViewCell")
     }
     
     func setupCommentCell() {
@@ -84,91 +66,99 @@ class DetailPageTableViewController: UITableViewController {
             return comments.count
         }
     }
-
+        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(DetailPageTableViewCell.self)", for: indexPath) as? DetailPageTableViewCell
-            else { return DetailPageTableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(ContentTableViewCell.self)", for: indexPath) as? ContentTableViewCell
+            else { return ContentTableViewCell() }
+            
+        
             //genderImageView
-            if detailPage?.gender == "M" {
-                cell.DetailGenderImageView.image = UIImage(named: "M")
+            if post?.gender == "M" {
+                cell.contentProfileImage.image = UIImage(named: "M")
             } else {
-                cell.DetailGenderImageView.image = UIImage(named: "F")
+                cell.contentProfileImage.image = UIImage(named: "F")
             }
             
             //DetailSchoolNameLabel
-            if let school = detailPage?.school {
-                cell.DetailSchoolNameLabel.text = "\(school)"
+            if let school = post?.school {
+                cell.contentNameOfSchoolLabel.text = "\(school)"
             } else {
-                cell.DetailSchoolNameLabel.text = "匿名"
+                cell.contentNameOfSchoolLabel.text = "匿名"
             }
             
             //DetailDepartmentLabel
-            if let department = detailPage?.department {
-                cell.DetailDepartmentLabel.text = "\(department)"
+            if let department = post?.department {
+                cell.contentDepartmentLabel.text = "\(department)"
             } else {
-                if detailPage?.gender == "M"{
-                    cell.DetailDepartmentLabel.text = "男生"
+                if post?.gender == "M"{
+                    cell.contentDepartmentLabel.text = "男生"
                 } else {
-                    cell.DetailDepartmentLabel.text = "女生"
+                    cell.contentDepartmentLabel.text = "女生"
                 }
             }
             
             //DetailArticleTitleLabel
-            if let title = detailPage?.title {
-                cell.DetailArticleTitleLabel.text = "\(title)"
+            if let title = post?.title {
+                cell.contentTitleLabel.text = "\(title)"
             }
             
             //DetailForumNameLabel
-            cell.DetailForumNameLabel.text = detailPage?.forumName
+            cell.contentNameOfForumLabel.text = post?.forumName
             
             //DetailCreatedAtLabel
             let dateFormatter = ISO8601DateFormatter()
             dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-            if let createdAt = detailPage?.createdAt {
+            if let createdAt = post?.createdAt {
                 let date = dateFormatter.date(from: createdAt)
                 let theCaleder = Calendar.current
                 let now = Date()
                 let diff: DateComponents = theCaleder.dateComponents([.day, .hour], from: date!, to: now)
                 if diff.day! < 1 {
-                    cell.DetailCreatedAtLabel.text = "\(diff.hour!)小時前"
+                    cell.contentCreatedAtLabel.text = "\(diff.hour!)小時前"
                 } else if 1 < diff.day! || diff.day! < 7 {
-                    cell.DetailCreatedAtLabel.text = "\(diff.day!)天前"
+                    cell.contentCreatedAtLabel.text = "\(diff.day!)天前"
                 } else {
                     let dateFormatter = DateFormatter()
                     dateFormatter.locale = Locale(identifier: "zh_Hant_TW")
                     dateFormatter.dateFormat = "MM月dd日"
                     let dateStr = dateFormatter.string(from: date!)
-                    cell.DetailCreatedAtLabel.text = "\(dateStr)"
+                    cell.contentCreatedAtLabel.text = "\(dateStr)"
                 }
             }
             
             //DetailContentLabel
-            cell.DetailContentLabel.text = nil
-            if let content = detailPage?.content {
-                DispatchQueue.main.async {
-                    cell.DetailContentLabel.text = content
+            cell.contentLabel.text = nil
+            let contentArray = post?.content.split(separator: "\n").map(String.init)
+            let mutableAttributedString = NSMutableAttributedString()
+            contentArray?.forEach{ row in
+                if row.contains("http") {
+                    mutableAttributedString.append(imageFrom: row, label: cell.contentLabel)
+                } else {
+                    mutableAttributedString.append(string: row)
                 }
             }
-            
+            cell.contentLabel.attributedText = mutableAttributedString
+
             //DetailLikeCountLabel, DetailCommentCountLabel
-            cell.DetailLikeCountLabel.text = nil
-            cell.DetailCommentCountLabel.text = nil
-            if let likeCount = detailPage?.likeCount,
-               let commentCount = detailPage?.commentCount {
-                cell.DetailLikeCountLabel.text = "\(likeCount)"
-                cell.DetailCommentCountLabel.text = "\(commentCount)"
+            cell.contentLikeCountLabel.text = nil
+            cell.contentCommentCountLabel.text = nil
+            if let likeCount = post?.likeCount,
+               let commentCount = post?.commentCount {
+                cell.contentLikeCountLabel.text = "\(likeCount)"
+                cell.contentCommentCountLabel.text = "\(commentCount)"
             }
+            
             
             return cell
             
         } else {
-            
-            let comment = comments[indexPath.row]
 
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CommentTableViewCell.self)", for: indexPath) as? CommentTableViewCell
             else { return CommentTableViewCell() }
+            
+            let comment = comments[indexPath.row]
             
             //genderImageView
             cell.commentGenderImageVIew.image = nil
@@ -185,7 +175,7 @@ class DetailPageTableViewController: UITableViewController {
             //SchoolNameLabel
             cell.commentSchoolNameLabel.text = nil
             if comment.hiddenByAuthor == true {
-                cell.commentSchoolNameLabel.text = "這則留言已被刪除"
+                cell.commentSchoolNameLabel.text = "這則留言已被本人刪除"
             } else {
                 if comment.host == true {
                     cell.commentSchoolNameLabel.text = "原PO"
@@ -196,12 +186,22 @@ class DetailPageTableViewController: UITableViewController {
             
             //ContentLabel
             cell.commentContentLabel.text = nil
-            if let content = comment.content {
-                cell.commentContentLabel.text = content
+            let commentArray = comment.content?.split(separator: "\n").map(String.init)
+            let mutableAttributedString = NSMutableAttributedString()
+            commentArray?.forEach({ row in
+                if row.contains("http") {
+                    mutableAttributedString.append(imageFrom: row, label: cell.commentContentLabel)
+                } else {
+                    mutableAttributedString.append(string: row)
+                }
+            })
+            if comment.hiddenByAuthor == true {
+                cell.commentContentLabel.text = "已經刪除的內容就像Dcard一樣，錯過是無法再相見的！"
             } else {
-                cell.commentContentLabel.text = "已經刪除的內容就像 Dcard 一樣，錯過是無法再相見的！"
+                cell.commentContentLabel.attributedText = mutableAttributedString
             }
-            
+
+
             //CommentFloorCreatedAtLabel
             cell.commentFloorCreatedAtLabel.text = nil
             DispatchQueue.main.async {
@@ -268,6 +268,41 @@ class DetailPageTableViewController: UITableViewController {
     }
     */
 }
+extension UIImage {
+    static func image(from url: URL, handel: @escaping (UIImage?) -> ()) {
+        
+        guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
+            handel(nil)
+            return
+        }
+        handel(image)
+    }
+    
+    func scaled(with scale: CGFloat) -> UIImage? {
+        let size = CGSize(width: floor(self.size.width * scale), height: floor(self.size.height * scale))
+        UIGraphicsBeginImageContext(size)
+        draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
 
-
-
+extension NSMutableAttributedString {
+    func append(string: String) {
+        self.append(NSAttributedString(string: string + "\n"))
+    }
+    
+    func append(imageFrom: String, label: UILabel) {
+        guard let url = URL(string: imageFrom) else { return }
+        
+        UIImage.image(from: url) { (image) in
+            guard let image = image else { return }
+            let scaledImg = image.scaled(with: UIScreen.main.bounds.width / image.size.width * 0.9 )
+            let attachment = NSTextAttachment()
+            attachment.image = scaledImg
+            self.append(NSAttributedString(attachment: attachment))
+            self.append(NSAttributedString(string: "\n"))
+        }
+    }
+}

@@ -4,26 +4,16 @@ import UIKit
 
 class MainPageTableViewController: UITableViewController {
     
-    var posts: [Posts] = []
+    var dcard: [Dcard] = []
     
     @objc func fetchPosts() {
-        let urlStr = "https://www.dcard.tw/service/api/v2/posts?popular=true&limit=100"
-        if let url = URL(string: urlStr) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    let decoder = JSONDecoder()
-                    do {
-                        let post = try decoder.decode([Posts].self, from: data)
-                        self.posts = post
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                            self.refreshControl?.endRefreshing()
-                        }
-                    } catch {
-                        print(error)
-                    }
-                }
-            }.resume()
+        DcardClient.shard.fetchPost(urlString: "https://www.dcard.tw/service/api/v2/posts?popular=true&limit=100") { dcard in
+            if let post = dcard {
+                self.dcard = post
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -34,7 +24,7 @@ class MainPageTableViewController: UITableViewController {
         refreshControl?.tintColor = UIColor.white
         refreshControl?.backgroundColor = UIColor.systemGray4
         refreshControl?.addTarget(self, action: #selector(fetchPosts), for: UIControl.Event.valueChanged) //下拉後執行的動作
-        tableView.addSubview(refreshControl!)
+        tableView.refreshControl = refreshControl
     }
     
     func update() {
@@ -47,7 +37,7 @@ class MainPageTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         fetchPosts()
         refreshControl()
         update()
@@ -56,7 +46,7 @@ class MainPageTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return posts.count
+        return dcard.count
     }
     
     
@@ -64,7 +54,7 @@ class MainPageTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MainPageTableViewCell.self)", for: indexPath) as? MainPageTableViewCell
         else { return MainPageTableViewCell()}
         
-        let post = posts[indexPath.row]
+        let post = dcard[indexPath.row]
         
         //genderImageView
         if post.gender == "M" {
@@ -157,9 +147,9 @@ class MainPageTableViewController: UITableViewController {
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let row = tableView.indexPathForSelectedRow?.row,
-           let controller = segue.destination as? DetailPageTableViewController {
-            let post = posts[row]
-            controller.posts = post
+           let controller = segue.destination as? PostViewController {
+            let post = dcard[row]
+            controller.dcard = post
         }
      }
      

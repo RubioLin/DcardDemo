@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F1CFA2E26E0CE150044A965 /* DetailPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CFA2D26E0CE150044A965 /* DetailPageTableViewController.swift */; };
-		0F1CFA6026E211B70044A965 /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CFA5F26E211B70044A965 /* DetailPage.swift */; };
+		0F1CFA2E26E0CE150044A965 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CFA2D26E0CE150044A965 /* PostViewController.swift */; };
+		0F1CFA6026E211B70044A965 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CFA5F26E211B70044A965 /* Post.swift */; };
 		0F1CFA6226E211C40044A965 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CFA6126E211C40044A965 /* Comments.swift */; };
 		0F6141A926DE240100442B2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6141A826DE240100442B2B /* AppDelegate.swift */; };
 		0F6141AB26DE240100442B2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6141AA26DE240100442B2B /* SceneDelegate.swift */; };
@@ -16,17 +16,18 @@
 		0F6141B226DE240200442B2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F6141B126DE240200442B2B /* Assets.xcassets */; };
 		0F6141B526DE240200442B2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F6141B326DE240200442B2B /* LaunchScreen.storyboard */; };
 		0F6141BF26DE29DA00442B2B /* MainPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6141BE26DE29DA00442B2B /* MainPageTableViewController.swift */; };
-		0F96B2BA26E48A5D008C61F8 /* DetailPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F96B2B826E48A5D008C61F8 /* DetailPageTableViewCell.swift */; };
-		0F96B2BB26E48A5D008C61F8 /* DetailPageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96B2B926E48A5D008C61F8 /* DetailPageTableViewCell.xib */; };
+		0F890D9226F9B44A009892B6 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F890D9026F9B44A009892B6 /* ContentTableViewCell.swift */; };
+		0F890D9326F9B44A009892B6 /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F890D9126F9B44A009892B6 /* ContentTableViewCell.xib */; };
 		0F96B2BE26E48A77008C61F8 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F96B2BC26E48A76008C61F8 /* CommentTableViewCell.swift */; };
 		0F96B2BF26E48A77008C61F8 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F96B2BD26E48A76008C61F8 /* CommentTableViewCell.xib */; };
-		0FF91B9226DF6AC6006A3F3F /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF91B9126DF6AC6006A3F3F /* Posts.swift */; };
+		0FF91B9226DF6AC6006A3F3F /* Dcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF91B9126DF6AC6006A3F3F /* Dcard.swift */; };
 		0FF91B9426DF6DC1006A3F3F /* MainPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF91B9326DF6DC1006A3F3F /* MainPageTableViewCell.swift */; };
+		0FFEFC352701844F00A3596A /* DcardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFEFC342701844F00A3596A /* DcardClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0F1CFA2D26E0CE150044A965 /* DetailPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageTableViewController.swift; sourceTree = "<group>"; };
-		0F1CFA5F26E211B70044A965 /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailPage.swift; path = DcardDemo/View/DetailPage.swift; sourceTree = SOURCE_ROOT; };
+		0F1CFA2D26E0CE150044A965 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		0F1CFA5F26E211B70044A965 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = DcardDemo/View/Post.swift; sourceTree = SOURCE_ROOT; };
 		0F1CFA6126E211C40044A965 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		0F6141A526DE240100442B2B /* DcardDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DcardDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F6141A826DE240100442B2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,12 +37,13 @@
 		0F6141B426DE240200442B2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F6141B626DE240200442B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F6141BE26DE29DA00442B2B /* MainPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageTableViewController.swift; sourceTree = "<group>"; };
-		0F96B2B826E48A5D008C61F8 /* DetailPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageTableViewCell.swift; sourceTree = "<group>"; };
-		0F96B2B926E48A5D008C61F8 /* DetailPageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPageTableViewCell.xib; sourceTree = "<group>"; };
+		0F890D9026F9B44A009892B6 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		0F890D9126F9B44A009892B6 /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		0F96B2BC26E48A76008C61F8 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		0F96B2BD26E48A76008C61F8 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
-		0FF91B9126DF6AC6006A3F3F /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		0FF91B9126DF6AC6006A3F3F /* Dcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dcard.swift; sourceTree = "<group>"; };
 		0FF91B9326DF6DC1006A3F3F /* MainPageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageTableViewCell.swift; sourceTree = "<group>"; };
+		0FFEFC342701844F00A3596A /* DcardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DcardClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				0FF91B9326DF6DC1006A3F3F /* MainPageTableViewCell.swift */,
-				0F96B2B826E48A5D008C61F8 /* DetailPageTableViewCell.swift */,
 				0F96B2BC26E48A76008C61F8 /* CommentTableViewCell.swift */,
 				0F96B2BD26E48A76008C61F8 /* CommentTableViewCell.xib */,
-				0F96B2B926E48A5D008C61F8 /* DetailPageTableViewCell.xib */,
+				0FFEFC342701844F00A3596A /* DcardClient.swift */,
+				0F890D9026F9B44A009892B6 /* ContentTableViewCell.swift */,
+				0F890D9126F9B44A009892B6 /* ContentTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -71,7 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				0F6141BE26DE29DA00442B2B /* MainPageTableViewController.swift */,
-				0F1CFA2D26E0CE150044A965 /* DetailPageTableViewController.swift */,
+				0F1CFA2D26E0CE150044A965 /* PostViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -79,9 +82,9 @@
 		0F1CFA2A26E0C4600044A965 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0F1CFA5F26E211B70044A965 /* DetailPage.swift */,
+				0F1CFA5F26E211B70044A965 /* Post.swift */,
 				0F1CFA6126E211C40044A965 /* Comments.swift */,
-				0FF91B9126DF6AC6006A3F3F /* Posts.swift */,
+				0FF91B9126DF6AC6006A3F3F /* Dcard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,7 +181,7 @@
 				0F6141B526DE240200442B2B /* LaunchScreen.storyboard in Resources */,
 				0F6141B226DE240200442B2B /* Assets.xcassets in Resources */,
 				0F6141B026DE240100442B2B /* Main.storyboard in Resources */,
-				0F96B2BB26E48A5D008C61F8 /* DetailPageTableViewCell.xib in Resources */,
+				0F890D9326F9B44A009892B6 /* ContentTableViewCell.xib in Resources */,
 				0F96B2BF26E48A77008C61F8 /* CommentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,15 +194,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F6141BF26DE29DA00442B2B /* MainPageTableViewController.swift in Sources */,
-				0F1CFA2E26E0CE150044A965 /* DetailPageTableViewController.swift in Sources */,
+				0F1CFA2E26E0CE150044A965 /* PostViewController.swift in Sources */,
 				0F6141A926DE240100442B2B /* AppDelegate.swift in Sources */,
+				0F890D9226F9B44A009892B6 /* ContentTableViewCell.swift in Sources */,
 				0FF91B9426DF6DC1006A3F3F /* MainPageTableViewCell.swift in Sources */,
 				0F1CFA6226E211C40044A965 /* Comments.swift in Sources */,
-				0FF91B9226DF6AC6006A3F3F /* Posts.swift in Sources */,
+				0FF91B9226DF6AC6006A3F3F /* Dcard.swift in Sources */,
 				0F6141AB26DE240100442B2B /* SceneDelegate.swift in Sources */,
 				0F96B2BE26E48A77008C61F8 /* CommentTableViewCell.swift in Sources */,
-				0F1CFA6026E211B70044A965 /* DetailPage.swift in Sources */,
-				0F96B2BA26E48A5D008C61F8 /* DetailPageTableViewCell.swift in Sources */,
+				0FFEFC352701844F00A3596A /* DcardClient.swift in Sources */,
+				0F1CFA6026E211B70044A965 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B9VFL264JH;
 				INFOPLIST_FILE = DcardDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -365,6 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B9VFL264JH;
 				INFOPLIST_FILE = DcardDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

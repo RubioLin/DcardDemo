@@ -1,6 +1,6 @@
 import Foundation
 
-struct DetailPage: Codable {
+struct Post: Codable {
     let gender: String
     let title: String
     let content: String
@@ -15,4 +15,6 @@ struct DetailPage: Codable {
 
 struct Media: Codable {
     let url: String
+    let width: Int
+    let height: Int
 }

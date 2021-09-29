@@ -1,6 +1,6 @@
 import Foundation
 
-struct Posts: Codable {
+struct Dcard: Codable {
     let id: Int
     let title: String
     let excerpt: String
