@@ -4,7 +4,7 @@ class DcardClient {
     
     static let shard = DcardClient()
     
-    func fetchPost(urlString: String, completionHandler: @escaping ([Dcard]?) -> Void) {
+    func fetchPosts(urlString: String, completionHandler: @escaping ([Dcard]?) -> Void) {
         let url = URL(string: urlString)
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             let jsonDecoder = JSONDecoder()

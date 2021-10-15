@@ -9,9 +9,9 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var commentGenderImageVIew: UIImageView!
-    @IBOutlet weak var commentSchoolNameLabel: UILabel!
-    @IBOutlet weak var commentContentLabel: UILabel!
+    @IBOutlet weak var commentProfileImage: UIImageView!
+    @IBOutlet weak var commentNameOfSchoolLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var commentFloorCreatedAtLabel: UILabel!
     
     override func awakeFromNib() {

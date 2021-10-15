@@ -31,7 +31,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="245" height="107"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="av3-mS-x4k">
-                                                            <rect key="frame" x="0.0" y="0.0" width="95.333333333333329" height="16"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="83.333333333333329" height="16"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5m2-Aa-4RS" userLabel="gender">
                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -40,14 +40,14 @@
                                                                         <constraint firstAttribute="width" constant="16" id="gWK-yd-Ksu"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ra-HA-rXK" userLabel="forumName">
-                                                                    <rect key="frame" x="27" y="0.0" width="28.666666666666671" height="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="看板" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ra-HA-rXK" userLabel="forumName">
+                                                                    <rect key="frame" x="27" y="0.0" width="22.666666666666671" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELe-K1-pjP" userLabel="schoolName">
-                                                                    <rect key="frame" x="66.666666666666671" y="0.0" width="28.666666666666671" height="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="學校" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELe-K1-pjP" userLabel="schoolName">
+                                                                    <rect key="frame" x="60.666666666666664" y="0.0" width="22.666666666666664" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -58,45 +58,45 @@
                                                                 <constraint firstItem="ELe-K1-pjP" firstAttribute="height" secondItem="5m2-Aa-4RS" secondAttribute="height" id="PeO-Iy-opO"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4z-t2-LCY" userLabel="articleTitle">
-                                                            <rect key="frame" x="0.0" y="16.000000000000004" width="41.333333333333336" height="35.333333333333343"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="標題" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4z-t2-LCY" userLabel="articleTitle">
+                                                            <rect key="frame" x="0.0" y="16.000000000000004" width="34.666666666666664" height="35.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU9-1q-vxY" userLabel="articleExcerpt">
-                                                            <rect key="frame" x="0.0" y="51.333333333333329" width="37.333333333333336" height="35.333333333333329"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摘錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU9-1q-vxY" userLabel="articleExcerpt">
+                                                            <rect key="frame" x="0.0" y="51.333333333333329" width="30.666666666666668" height="35.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="dFF-QD-FkX">
-                                                            <rect key="frame" x="0.0" y="86.666666666666671" width="138.33333333333334" height="20.333333333333329"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dFF-QD-FkX">
+                                                            <rect key="frame" x="0.0" y="86.666666666666671" width="103.33333333333333" height="20.333333333333329"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Zjt-Bv-oHo">
                                                                     <rect key="frame" x="0.0" y="0.99999999999999822" width="19.666666666666668" height="19"/>
                                                                     <color key="tintColor" red="0.9137254901960784" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQl-Tg-kft" userLabel="likeCount">
-                                                                    <rect key="frame" x="28.666666666666664" y="0.0" width="7" height="20.333333333333332"/>
+                                                                    <rect key="frame" x="21.666666666666668" y="0.0" width="7" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="l88-3R-nDA">
-                                                                    <rect key="frame" x="44.666666666666664" y="0.99999999999999822" width="19.666666666666664" height="19"/>
+                                                                    <rect key="frame" x="30.666666666666664" y="0.99999999999999822" width="19.666666666666664" height="19"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtE-uw-WYn" userLabel="commentsCount">
-                                                                    <rect key="frame" x="73.333333333333329" y="0.0" width="7" height="20.333333333333332"/>
+                                                                    <rect key="frame" x="52.333333333333336" y="0.0" width="7" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ccC-Jr-4dC">
-                                                                    <rect key="frame" x="89.333333333333329" y="0.33333333333333215" width="17.333333333333329" height="20"/>
+                                                                    <rect key="frame" x="61.333333333333336" y="0.33333333333333215" width="17.333333333333336" height="20"/>
                                                                     <color key="tintColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收藏" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-6W-ACr" userLabel="collect">
-                                                                    <rect key="frame" x="115.66666666666667" y="0.0" width="22.666666666666671" height="20.333333333333332"/>
+                                                                    <rect key="frame" x="80.666666666666671" y="0.0" width="22.666666666666671" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -126,14 +126,14 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="articleExcerptLabel" destination="MU9-1q-vxY" id="4m2-Cc-RMa"/>
-                                    <outlet property="articleImageView" destination="GEm-NF-o0R" id="znf-sg-CxJ"/>
-                                    <outlet property="articleTitleLabel" destination="k4z-t2-LCY" id="92t-hC-3Ab"/>
-                                    <outlet property="commentCountLabel" destination="RtE-uw-WYn" id="HRS-cM-BHL"/>
-                                    <outlet property="forumNameLabel" destination="3Ra-HA-rXK" id="qST-kO-p5p"/>
+                                    <outlet property="countOfCommentLabel" destination="RtE-uw-WYn" id="HRS-cM-BHL"/>
+                                    <outlet property="countOfLikeLabel" destination="AQl-Tg-kft" id="htX-Ms-CMf"/>
+                                    <outlet property="excerptLabel" destination="MU9-1q-vxY" id="4m2-Cc-RMa"/>
                                     <outlet property="genderImageView" destination="5m2-Aa-4RS" id="V0F-yi-kQF"/>
-                                    <outlet property="likeCountLabel" destination="AQl-Tg-kft" id="htX-Ms-CMf"/>
-                                    <outlet property="schoolNameLabel" destination="ELe-K1-pjP" id="6SV-IT-omM"/>
+                                    <outlet property="nameOfForumLabel" destination="3Ra-HA-rXK" id="qST-kO-p5p"/>
+                                    <outlet property="nameOfSchoolLabel" destination="ELe-K1-pjP" id="6SV-IT-omM"/>
+                                    <outlet property="thumbnailImageView" destination="GEm-NF-o0R" id="znf-sg-CxJ"/>
+                                    <outlet property="titleLabel" destination="k4z-t2-LCY" id="92t-hC-3Ab"/>
                                     <segue destination="LaA-WG-X63" kind="show" id="H6I-mu-l7K"/>
                                 </connections>
                             </tableViewCell>

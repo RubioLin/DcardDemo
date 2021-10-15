@@ -63,7 +63,6 @@
 				0FF91B9326DF6DC1006A3F3F /* MainPageTableViewCell.swift */,
 				0F96B2BC26E48A76008C61F8 /* CommentTableViewCell.swift */,
 				0F96B2BD26E48A76008C61F8 /* CommentTableViewCell.xib */,
-				0FFEFC342701844F00A3596A /* DcardClient.swift */,
 				0F890D9026F9B44A009892B6 /* ContentTableViewCell.swift */,
 				0F890D9126F9B44A009892B6 /* ContentTableViewCell.xib */,
 			);
@@ -73,6 +72,7 @@
 		0F1CFA2926E0C43C0044A965 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0FFEFC342701844F00A3596A /* DcardClient.swift */,
 				0F6141BE26DE29DA00442B2B /* MainPageTableViewController.swift */,
 				0F1CFA2D26E0CE150044A965 /* PostViewController.swift */,
 			);

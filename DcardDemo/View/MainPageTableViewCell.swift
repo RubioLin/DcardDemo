@@ -3,13 +3,13 @@ import UIKit
 class MainPageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var genderImageView: UIImageView!
-    @IBOutlet weak var forumNameLabel: UILabel!
-    @IBOutlet weak var schoolNameLabel: UILabel!
-    @IBOutlet weak var articleTitleLabel: UILabel!
-    @IBOutlet weak var articleExcerptLabel: UILabel!
-    @IBOutlet weak var likeCountLabel: UILabel!
-    @IBOutlet weak var commentCountLabel: UILabel!
-    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var nameOfForumLabel: UILabel!
+    @IBOutlet weak var nameOfSchoolLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var excerptLabel: UILabel!
+    @IBOutlet weak var countOfLikeLabel: UILabel!
+    @IBOutlet weak var countOfCommentLabel: UILabel!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

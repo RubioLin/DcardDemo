@@ -7,12 +7,13 @@ class MainPageTableViewController: UITableViewController {
     var dcard: [Dcard] = []
     
     @objc func fetchPosts() {
-        DcardClient.shard.fetchPost(urlString: "https://www.dcard.tw/service/api/v2/posts?popular=true&limit=100") { dcard in
+        DcardClient.shard.fetchPosts(urlString: "https://www.dcard.tw/service/api/v2/posts?popular=true&limit=30") { dcard in
             if let post = dcard {
                 self.dcard = post
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
@@ -27,7 +28,7 @@ class MainPageTableViewController: UITableViewController {
         tableView.refreshControl = refreshControl
     }
     
-    func update() {
+    func updateBarBtn() {
         let barButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = barButtonItem
         let image = UIImage(systemName: "arrow.backward")
@@ -40,7 +41,7 @@ class MainPageTableViewController: UITableViewController {
         super.viewDidLoad()        
         fetchPosts()
         refreshControl()
-        update()
+        updateBarBtn()
     }
     
     // MARK: - Table view data source
@@ -63,44 +64,45 @@ class MainPageTableViewController: UITableViewController {
             cell.genderImageView.image = UIImage(named: "F")
         }
         
-        //forumNameLabel
-        cell.forumNameLabel.text = post.forumName
+        //nameOfForumLabel
+        cell.nameOfForumLabel.text = post.forumName
         
-        //schoolNameLabel
+        //nameOfSchoolLabel
         if let school = post.school {
-            cell.schoolNameLabel.text = school
+            cell.nameOfSchoolLabel.text = school
         } else {
-            cell.schoolNameLabel.text = "匿名"
+            cell.nameOfSchoolLabel.text = "匿名"
         }
         
-        //articleTitleLabel
-        cell.articleTitleLabel.text = post.title
+        //titleLabel
+        cell.titleLabel.text = post.title
         
-        //articleExcerptLabel
-        cell.articleExcerptLabel.text = post.excerpt
+        //excerptLabel
+        cell.excerptLabel.text = post.excerpt
         
-        //commentCountLabel
-        cell.commentCountLabel.text = String(post.commentCount)
+        //countOfCommentLabel
+        cell.countOfCommentLabel.text = String(post.commentCount)
         
-        //likeCountLabel
-        cell.likeCountLabel.text = String(post.likeCount)
+        //countOfLikeLabel
+        cell.countOfLikeLabel.text = String(post.likeCount)
         
-        //articleImageView
+        //thumbnailImageView
         if !post.mediaMeta.isEmpty {
             let url = URL(string: post.mediaMeta[0]!.url)
             URLSession.shared.dataTask(with: url!) { data, response, error in
                 if let data = data {
                     DispatchQueue.main.async {
-                        cell.articleImageView.image = UIImage(data: data)
-                        cell.articleImageView.isHidden = false
+                        cell.thumbnailImageView.image = UIImage(data: data)
+                        cell.thumbnailImageView.isHidden = false
                     }
                 }
             }.resume()
         } else {
-            cell.articleImageView.isHidden = true
+            cell.thumbnailImageView.isHidden = true
         }
         return cell
     }
+    
     
     
     
@@ -146,8 +148,7 @@ class MainPageTableViewController: UITableViewController {
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let row = tableView.indexPathForSelectedRow?.row,
-           let controller = segue.destination as? PostViewController {
+        if let row = tableView.indexPathForSelectedRow?.row, let controller = segue.destination as? PostViewController {
             let post = dcard[row]
             controller.dcard = post
         }

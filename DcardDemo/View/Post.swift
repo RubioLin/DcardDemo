@@ -14,7 +14,7 @@ struct Post: Codable {
 }
 
 struct Media: Codable {
-    let url: String
-    let width: Int
-    let height: Int
+    var url: String
+    var width: Int?
+    var height: Int?
 }
